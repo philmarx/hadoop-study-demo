@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StudyHadoopApplicationTests {
+public class HDFSTests {
 
 	@Test
 	public void readFile() throws IOException {
@@ -37,8 +37,8 @@ public class StudyHadoopApplicationTests {
 		Configuration conf = new Configuration();
 		FileSystem fs = FileSystem.get(conf);
 		// 如果没有puglic目录，就自动创建该目录
-		FSDataOutputStream out = fs.create(new Path("hdfs://master:9000/public/file"));
-		InputStream in = new ByteArrayInputStream("hello hadoop".getBytes("UTF-8"));
+		FSDataOutputStream out = fs.create(new Path("hdfs://master:9000/wordcount/input"));
+		InputStream in = new ByteArrayInputStream("hello".getBytes("UTF-8"));
 		IOUtils.copyBytes(in, out, 4096, true);
 	}
 
